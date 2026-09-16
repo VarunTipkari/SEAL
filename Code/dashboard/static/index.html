@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>SEAL AI</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<div class="shell">
+
+    <!-- Sidebar -->
+    <aside class="side">
+        <div class="brand">
+            <span class="logo" aria-hidden="true">◈</span>
+            <div class="bname">
+                <span class="bt">SEAL</span>
+                <span class="bsub">Sovereign AI · on-prem</span>
+            </div>
+        </div>
+
+        <button class="newchat" id="btn-new" title="Start a fresh conversation">
+            <span class="nc-icon">✚</span> New chat
+        </button>
+
+        <nav class="nav">
+            <button class="nav-item active" id="nav-chat" data-act="chat">
+                <span class="ni">◷</span>Chat
+            </button>
+            <div class="chat-history" id="chat-history">
+                <div class="chat-history-title">Recent chats</div>
+                <div id="chat-list"></div>
+            </div>
+            <button class="nav-item" id="nav-kb" data-act="kb">
+                <span class="ni">▤</span>Knowledge base
+            </button>
+            <button class="nav-item" id="nav-files" data-act="files">
+                <span class="ni">📁</span>Files
+            </button>
+        </nav>
+
+        <div class="side-foot">
+            <div class="side-model" id="side-model">auto · local models</div>
+            <button class="nav-item" id="theme-toggle">
+                <span class="ni" id="theme-ico">◐</span>
+                <span id="theme-label">Theme</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Chat -->
+    <main class="chat" id="chat">
+        <header class="chat-head">
+            <div class="ch-title">
+                <span class="site">SEAL AI</span>
+                <span class="ctx" id="head-context">all local · nothing leaves this machine</span>
+            </div>
+            <div class="ch-tools">
+                <span class="pill model" id="model-pill">
+                    <span class="dot" id="model-dot"></span>
+                    <span id="model-pill-label">model auto</span>
+                </span>
+            </div>
+        </header>
+
+        <div class="thread" id="thread">
+            <div class="spacer" id="thread-spacer"></div>
+        </div>
+
+        <div class="composer-wrap" id="composer-wrap">
+            <div class="attach-row" id="attach-row"></div>
+            <div class="model-bar" id="model-bar">
+                <span class="mb-label">Model</span>
+                <span class="seg" id="seg-general">
+                    <span class="sg"></span>General
+                    <span class="mb-id">llama3.2:3b</span>
+                </span>
+                <span class="seg" id="seg-vision">
+                    <span class="sg"></span>Vision
+                    <span class="mb-id">qwen2.5vl:3b</span>
+                </span>
+                <span class="seg" id="seg-coder">
+                    <span class="sg"></span>Coding
+                    <span class="mb-id">qwen2.5-coder:1.5b</span>
+                </span>
+                <span class="mb-state" id="mb-state">auto per task</span>
+            </div>
+            <div class="composer" id="composer">
+                <label class="clip" id="clip" title="Attach a file">
+                    <span class="clip-ic">⌁</span>
+                    <input type="file" id="file-input" multiple hidden/>
+                </label>
+                <textarea id="task-input" rows="1" placeholder="Ask SEAL anything…"></textarea>
+                <button class="send" id="send-btn" title="Run with SEAL">➤</button>
+                <button class="stop" id="stop-btn" title="Stop" hidden>■</button>
+            </div>
+            <div class="composer-hint">Files, code and questions processed locally by open-weight models.</div>
+        </div>
+    </main>
+</div>
+
+<!-- Drawers -->
+<div class="backdrop" id="backdrop" hidden></div>
+
+<!-- Knowledge Base Drawer -->
+<section class="drawer" id="kb-drawer" aria-label="Knowledge base">
+    <header class="d-head">
+        <div class="d-title"><span class="ni">▤</span> Knowledge base</div>
+        <button class="x" data-close>✕</button>
+    </header>
+    <div class="d-body">
+        <div class="kb-counts muted" id="kb-counts">—</div>
+
+        <div class="kb-search-row">
+            <input type="search" id="kb-query" placeholder="Search knowledge base…"/>
+            <button class="mini" id="kb-search-btn">Search</button>
+        </div>
+        <div class="kb-results" id="kb-results"></div>
+
+        <div class="kb-sect-title">Add knowledge files</div>
+        <div class="kb-add-row">
+            <button class="mini primary" id="kb-add-btn">＋ Add files</button>
+            <input type="file" id="kb-add-input" hidden multiple accept=".md,.txt,.csv"/>
+        </div>
+        <div class="muted small" id="kb-add-status">Add markdown, text, or CSV files to the knowledge base.</div>
+
+        <div class="kb-sect-title">Documents</div>
+        <div class="kb-docs" id="kb-docs"></div>
+    </div>
+</section>
+
+<!-- Files Drawer -->
+<section class="drawer" id="files-drawer" aria-label="Files">
+    <header class="d-head">
+        <div class="d-title"><span class="ni">📁</span> Files</div>
+        <button class="x" data-close>✕</button>
+    </header>
+    <div class="d-body">
+        <div class="kb-search-row">
+            <input type="search" id="file-search" placeholder="Search files…"/>
+            <button class="mini" id="file-search-btn">Search</button>
+        </div>
+        <div class="file-browser" id="file-browser"></div>
+    </div>
+</section>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>

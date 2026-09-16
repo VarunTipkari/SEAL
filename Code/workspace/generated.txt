@@ -1,0 +1,16 @@
+# Import necessary libraries
+import numpy as np
+
+def multiply_matrix(n):
+    # Initialize an n*n matrix with zeros
+    matrix = np.zeros((n, n))
+    
+    # Fill the matrix with the identity matrix
+    np.fill_diagonal(matrix, 1)
+    
+    return matrix
+
+# Example usage
+n = 3
+result = multiply_matrix(n)
+print(result)

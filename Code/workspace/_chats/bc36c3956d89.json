@@ -1,0 +1,30 @@
+{
+  "id": "bc36c3956d89",
+  "title": "hii",
+  "created_at": "2026-09-15T09:49:49.157695+00:00",
+  "updated_at": "2026-09-16T06:46:59.473183+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "text": "hii",
+      "attachments": []
+    },
+    {
+      "role": "assistant",
+      "text": "Hello! It's nice to meet you. This is the start of our conversation. How can I assist you today?",
+      "model": "llama3.2:3b",
+      "attachments": []
+    },
+    {
+      "role": "user",
+      "text": "write a python programm for printing hello world",
+      "attachments": []
+    },
+    {
+      "role": "assistant",
+      "text": "Sure! Here's a simple Python program that prints \"Hello, World!\" to the console:\n\n```python\nprint(\"Hello, World!\")\n```\n\nThis program uses the `print()` function to output the string \"Hello, World!\" to the console. The `print()` function is a built-in Python function that takes one or more arguments and prints them to the console. In this case, we're passing the string \"Hello, World!\" as an argument to the `print()` function.",
+      "model": "qwen2.5-coder:1.5b",
+      "attachments": []
+    }
+  ]
+}
